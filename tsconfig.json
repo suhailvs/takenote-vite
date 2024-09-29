@@ -1,4 +1,12 @@
+//https://stackoverflow.com/a/65306700/2351696
 {
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/client/*"],
+      "@resources/*": ["./src/resources/*"]
+    }
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
