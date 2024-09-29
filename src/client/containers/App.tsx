@@ -10,7 +10,7 @@ import { PrivateRoute } from '@/router/PrivateRoute'
 import { getAuth } from '@/selectors'
 import { login } from '@/slices/auth'
 
-const isDemo = process.env.DEMO
+const isDemo = true //process.env.DEMO
 
 export const App: React.FC = () => {
   // ===========================================================================

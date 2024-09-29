@@ -41,7 +41,7 @@ export function useKey(key: string, action: () => void) {
 }
 
 export function useBeforeUnload(handler: Function = () => {}) {
-  if (process.env.NODE_ENV !== 'production' && typeof handler !== 'function') {
+  if (typeof handler !== 'function') {
     throw new TypeError(`Expected "handler" to be a function, not ${typeof handler}.`)
   }
 
