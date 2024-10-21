@@ -10,7 +10,7 @@ export const initialState: SettingsState = {
   notesSortKey: NotesSortKey.LAST_UPDATED,
   codeMirrorOptions: {
     mode: 'gfm',
-    theme: 'base16-light',
+    theme: 'default', //'base16-light',
     lineNumbers: false,
     lineWrapping: true,
     styleActiveLine: { nonEmpty: true },

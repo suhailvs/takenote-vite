@@ -7,9 +7,10 @@ import { updateActiveNote, updateSelectedNotes, pruneNotes, swapFolder } from '@
 import { NoteItem } from '@/types'
 
 import { uuidPlugin } from '../../utils/reactMarkdownPlugins'
-
+import 'github-markdown-css'
 import NoteLink from './NoteLink'
-
+// https://github.com/remarkjs/react-markdown/issues/339#issuecomment-653396337
+window.process = { cwd: () => '' };
 export interface PreviewEditorProps {
   noteText: string
   directionText: string
@@ -58,6 +59,7 @@ export const PreviewEditor: React.FC<PreviewEditorProps> = ({ noteText, directio
   }
 
   return (
+    <div className='markdown-body'>
     <ReactMarkdown
       plugins={[uuidPlugin]}
       renderers={{
@@ -67,5 +69,6 @@ export const PreviewEditor: React.FC<PreviewEditorProps> = ({ noteText, directio
       className={`previewer previewer_direction-${directionText}`}
       source={noteText}
     />
+    </div>
   )
 }

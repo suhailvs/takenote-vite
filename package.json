@@ -19,6 +19,7 @@
     "cors": "^2.8.5",
     "dayjs": "^1.9.3",
     "express": "^4.17.1",
+    "github-markdown-css": "^5.7.0",
     "helmet": "^4.1.1",
     "jszip": "^3.5.0",
     "mousetrap": "^1.6.5",

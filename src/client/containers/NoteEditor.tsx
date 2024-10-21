@@ -14,7 +14,7 @@ import { getNotes, getSettings, getSync } from '@/selectors'
 import { setPendingSync } from '@/slices/sync'
 
 import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/base16-light.css'
+// import 'codemirror/theme/base16-light.css'
 import 'codemirror/mode/gfm/gfm'
 import 'codemirror/addon/selection/active-line'
 import 'codemirror/addon/scroll/scrollpastend'

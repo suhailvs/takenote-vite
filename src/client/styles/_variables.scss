@@ -10,10 +10,10 @@ $note-header-height: 60px;
 
 // Colors
 $primary: #5183f5;
-$font-color: #404040;
+$font-color: #000;
 $light-font-color: #d0d0d0;
 $app-sidebar-color: #2d2d2d;
-$note-sidebar-color: #e5e5e5;
+$note-sidebar-color: white; //#e5e5e5;
 $light-theme-background: #f5f5f5;
 $accent-gray: #d0d0d0;
 $accent-lightgray: lighten($accent-gray, 12%);
