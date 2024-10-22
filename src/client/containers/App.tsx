@@ -58,8 +58,8 @@ export const App: React.FC = () => {
       <Switch>
         {isDemo ? (
           <>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/app" component={TakeNoteApp} />
+            <Route exact path="/app" component={LandingPage} />
+            <Route path="/" component={TakeNoteApp} />
           </>
         ) : (
           <>
