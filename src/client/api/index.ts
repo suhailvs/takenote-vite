@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid'
 import dayjs from 'dayjs'
 
-import { NoteItem, SyncPayload, SettingsState } from '@/types'
+import { NoteItem, SyncPayload, SettingsState } from '../../client/types'
 
 const scratchpadNote = {
   id: uuid(),

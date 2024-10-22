@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TestID } from '@resources/TestID'
+import { TestID } from '../../../resources/TestID'
 
 export interface SearchBarProps {
   searchRef: React.MutableRefObject<HTMLInputElement>

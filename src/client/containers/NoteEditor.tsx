@@ -4,14 +4,14 @@ import { Controlled as CodeMirror } from 'react-codemirror2'
 import { useDispatch, useSelector } from 'react-redux'
 import { Editor } from 'codemirror'
 
-import { getActiveNote } from '@/utils/helpers'
-import { updateNote } from '@/slices/note'
-import { NoteItem } from '@/types'
-import { NoteMenuBar } from '@/containers/NoteMenuBar'
-import { EmptyEditor } from '@/components/Editor/EmptyEditor'
-import { PreviewEditor } from '@/components/Editor/PreviewEditor'
-import { getNotes, getSettings, getSync } from '@/selectors'
-import { setPendingSync } from '@/slices/sync'
+import { getActiveNote } from '../../client/utils/helpers'
+import { updateNote } from '../../client/slices/note'
+import { NoteItem } from '../../client/types'
+import { NoteMenuBar } from '../../client/containers/NoteMenuBar'
+import { EmptyEditor } from '../../client/components/Editor/EmptyEditor'
+import { PreviewEditor } from '../../client/components/Editor/PreviewEditor'
+import { getNotes, getSettings, getSync } from '../../client/selectors'
+import { setPendingSync } from '../../client/slices/sync'
 
 import 'codemirror/lib/codemirror.css'
 // import 'codemirror/theme/base16-light.css'
@@ -89,6 +89,8 @@ export const NoteEditor: React.FC = () => {
           setEditorOverlay(editor)
         }}
         onBeforeChange={(editor, data, value) => {
+          console.log(editor)
+          console.log(data)
           _updateNote({
             id: activeNote.id,
             text: value,
@@ -97,6 +99,7 @@ export const NoteEditor: React.FC = () => {
           })
         }}
         onChange={(editor, data, value) => {
+          console.log(data)
           if (!value) {
             editor.focus()
           }

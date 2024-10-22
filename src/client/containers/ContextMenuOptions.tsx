@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { ArrowUp, Download, Star, Trash, X, Edit2, Clipboard } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { LabelText } from '@resources/LabelText'
-import { TestID } from '@resources/TestID'
-import { ContextMenuOption } from '@/components/NoteList/ContextMenuOption'
-import { downloadNotes, isDraftNote, getShortUuid, copyToClipboard } from '@/utils/helpers'
+import { LabelText } from '../../resources/LabelText'
+import { TestID } from '../../resources/TestID'
+import { ContextMenuOption } from '../../client/components/NoteList/ContextMenuOption'
+import { downloadNotes, isDraftNote, getShortUuid, copyToClipboard } from '../../client/utils/helpers'
 import {
   deleteNotes,
   toggleFavoriteNotes,
@@ -14,12 +14,12 @@ import {
   updateActiveNote,
   swapFolder,
   removeCategoryFromNotes,
-} from '@/slices/note'
-import { getCategories, getNotes } from '@/selectors'
-import { Folder, ContextMenuEnum } from '@/utils/enums'
-import { CategoryItem, NoteItem } from '@/types'
-import category, { setCategoryEdit, deleteCategory } from '@/slices/category'
-import { MenuUtilitiesContext } from '@/containers/ContextMenu'
+} from '../../client/slices/note'
+import { getCategories, getNotes } from '../../client/selectors'
+import { Folder, ContextMenuEnum } from '../../client/utils/enums'
+import { CategoryItem, NoteItem } from '../../client/types'
+import { setCategoryEdit, deleteCategory } from '../../client/slices/category'
+import { MenuUtilitiesContext } from '../../client/containers/ContextMenu'
 
 export interface ContextMenuOptionsProps {
   clickedItem: NoteItem | CategoryItem

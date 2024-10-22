@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { TestID } from '@resources/TestID'
-import { ReactSubmitEvent } from '@/types'
+import { TestID } from '../../../resources/TestID'
+import { ReactSubmitEvent } from '../../../client/types'
 
 export interface AddCategoryFormProps {
   dataTestID: string

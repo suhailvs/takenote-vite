@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { v4 as uuid } from 'uuid'
 
-import { Folder, NotesSortKey } from '@/utils/enums'
-import { NoteItem, NoteState } from '@/types'
-import { isDraftNote } from '@/utils/helpers'
-import { getNotesSorter } from '@/utils/notesSortStrategies'
+import { Folder, NotesSortKey } from '../../client/utils/enums'
+import { NoteItem, NoteState } from '../../client/types'
+import { isDraftNote } from '../../client/utils/helpers'
+import { getNotesSorter } from '../../client/utils/notesSortStrategies'
 
 const getNewActiveNoteId = (
   notes: NoteItem[],

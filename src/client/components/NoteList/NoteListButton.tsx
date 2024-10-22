@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from 'react'
 
 export interface NoteListButtonProps {
+  children: React.ReactNode;
   dataTestID: string
   disabled?: boolean
   handler: MouseEventHandler

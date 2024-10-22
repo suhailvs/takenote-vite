@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Book, Star, Trash2 } from 'react-feather'
 
-import { Folder } from '@/utils/enums'
-import { iconColor } from '@/utils/constants'
-import { ReactDragEvent } from '@/types'
+import { Folder } from '../../../client/utils/enums'
+import { iconColor } from '../../../client/utils/constants'
+import { ReactDragEvent } from '../../../client/types'
 
 export interface FolderOptionProps {
   text: string

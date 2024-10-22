@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useRef } from 'react'
 import { Icon } from 'react-feather'
 
-import { iconColor } from '@/utils/constants'
+import { iconColor } from '../../../client/utils/constants'
 
 export interface IconButtonUploaderProps {
   dataTestID?: string

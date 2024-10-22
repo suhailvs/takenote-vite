@@ -1,7 +1,7 @@
 import React, { KeyboardEventHandler, MouseEventHandler, useContext } from 'react'
 import { Icon } from 'react-feather'
 
-import { MenuUtilitiesContext } from '@/containers/ContextMenu'
+import { MenuUtilitiesContext } from '../../../client/containers/ContextMenu'
 
 export interface ContextMenuOptionProps {
   dataTestID: string

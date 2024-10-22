@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { CategoryItem, CategoryState } from '@/types'
+import { CategoryItem, CategoryState } from '../../client/types'
 
 const _swapCategories = (categories: CategoryItem[], categoryId: number, destinationId: number) => {
   const newCategories = [...categories]

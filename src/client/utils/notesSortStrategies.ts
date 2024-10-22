@@ -1,4 +1,4 @@
-import { NoteItem } from '@/types'
+import { NoteItem } from '../../client/types'
 
 import { getNoteTitle } from './helpers'
 import { NotesSortKey } from './enums'

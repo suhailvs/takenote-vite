@@ -1,7 +1,7 @@
 import React from 'react'
 import dayjs from 'dayjs'
 
-import { TestID } from '@resources/TestID'
+import { TestID } from '../../resources/TestID'
 
 export interface LastSyncedNotificationProps {
   datetime: string

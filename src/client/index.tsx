@@ -1,16 +1,15 @@
-import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom'
 import createSagaMiddleware from 'redux-saga'
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 
-import { App } from '@/containers/App'
-import rootSaga from '@/sagas'
-import rootReducer from '@/slices'
-import history from '@/utils/history'
+import { App } from '../client/containers/App'
+import rootSaga from '../client/sagas'
+import rootReducer from '../client/slices'
+import history from '../client/utils/history'
 
-import '@/styles/index.scss'
+import '../client/styles/index.scss'
 
 const sagaMiddleware = createSagaMiddleware()
 const store = configureStore({

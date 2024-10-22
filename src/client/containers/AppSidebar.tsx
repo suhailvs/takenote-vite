@@ -2,13 +2,13 @@ import React from 'react'
 import { Plus } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { LabelText } from '@resources/LabelText'
-import { TestID } from '@resources/TestID'
-import { ActionButton } from '@/components/AppSidebar/ActionButton'
-import { FolderOption } from '@/components/AppSidebar/FolderOption'
-import { ScratchpadOption } from '@/components/AppSidebar/ScratchpadOption'
-import { Folder, NotesSortKey } from '@/utils/enums'
-import { CategoryList } from '@/containers/CategoryList'
+import { LabelText } from '../../resources/LabelText'
+import { TestID } from '../../resources/TestID'
+import { ActionButton } from '../../client/components/AppSidebar/ActionButton'
+import { FolderOption } from '../../client/components/AppSidebar/FolderOption'
+import { ScratchpadOption } from '../../client/components/AppSidebar/ScratchpadOption'
+import { Folder, NotesSortKey } from '../../client/utils/enums'
+import { CategoryList } from '../../client/containers/CategoryList'
 import {
   addNote,
   swapFolder,
@@ -17,11 +17,11 @@ import {
   assignTrashToNotes,
   updateSelectedNotes,
   unassignTrashFromNotes,
-} from '@/slices/note'
-import { togglePreviewMarkdown } from '@/slices/settings'
-import { getSettings, getNotes } from '@/selectors'
-import { NoteItem } from '@/types'
-import { newNoteHandlerHelper, getActiveNote } from '@/utils/helpers'
+} from '../../client/slices/note'
+import { togglePreviewMarkdown } from '../../client/slices/settings'
+import { getSettings, getNotes } from '../../client/selectors'
+import { NoteItem } from '../../client/types'
+import { newNoteHandlerHelper, getActiveNote } from '../../client/utils/helpers'
 
 export const AppSidebar: React.FC = () => {
   // ===========================================================================

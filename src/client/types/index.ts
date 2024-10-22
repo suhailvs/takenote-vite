@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Folder, NotesSortKey } from '@/utils/enums'
-import { sync } from '@/slices/sync'
+import { Folder, NotesSortKey } from '../../client/utils/enums'
+import { sync } from '../../client/slices/sync'
 
 //==============================================================================
 // Items

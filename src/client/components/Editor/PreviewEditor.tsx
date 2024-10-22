@@ -2,15 +2,16 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { useDispatch } from 'react-redux'
 
-import { Folder } from '@/utils/enums'
-import { updateActiveNote, updateSelectedNotes, pruneNotes, swapFolder } from '@/slices/note'
-import { NoteItem } from '@/types'
+import { Folder } from '../../../client/utils/enums'
+import { updateActiveNote, updateSelectedNotes, pruneNotes, swapFolder } from '../../../client/slices/note'
+import { NoteItem } from '../../../client/types'
 
 import { uuidPlugin } from '../../utils/reactMarkdownPlugins'
 import 'github-markdown-css'
 import NoteLink from './NoteLink'
 // https://github.com/remarkjs/react-markdown/issues/339#issuecomment-653396337
-window.process = { cwd: () => '' };
+// window.process = { cwd: () => '' };
+(window as any).process = { cwd: () => '' };
 export interface PreviewEditorProps {
   noteText: string
   directionText: string
@@ -63,7 +64,7 @@ export const PreviewEditor: React.FC<PreviewEditorProps> = ({ noteText, directio
     <ReactMarkdown
       plugins={[uuidPlugin]}
       renderers={{
-        uuid: ({ value }) => returnNoteLink(value),
+        uuid: ({ value }:any) => returnNoteLink(value),
       }}
       linkTarget="_blank"
       className={`previewer previewer_direction-${directionText}`}

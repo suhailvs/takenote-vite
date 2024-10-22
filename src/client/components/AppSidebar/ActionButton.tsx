@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from 'react'
 import { Icon } from 'react-feather'
 
-import { iconColor } from '@/utils/constants'
+import { iconColor } from '../../../client/utils/constants'
 
 export interface ActionButtonProps {
   dataTestID: string

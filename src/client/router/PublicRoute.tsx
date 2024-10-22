@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect, Route, RouteProps } from 'react-router-dom'
 
-import { getAuth } from '@/selectors'
+import { getAuth } from '../../client/selectors'
 
 interface PublicRouteProps extends RouteProps {
   component: any

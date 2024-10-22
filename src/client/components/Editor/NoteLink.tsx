@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { NoteItem } from '@/types'
-import { Errors } from '@/utils/enums'
-import { TestID } from '@resources/TestID'
+import { NoteItem } from '../../../client/types'
+import { Errors } from '../../../client/utils/enums'
+import { TestID } from '../../../resources/TestID'
 
 import { getNoteTitle, getActiveNoteFromShortUuid } from '../../utils/helpers'
 

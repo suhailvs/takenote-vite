@@ -2,11 +2,11 @@ import { all, put, takeLatest, select } from 'redux-saga/effects'
 import dayjs from 'dayjs'
 import axios from 'axios'
 
-import { requestCategories, requestNotes, requestSettings, saveState, saveSettings } from '@/api'
-import { loadCategories, loadCategoriesError, loadCategoriesSuccess } from '@/slices/category'
-import { loadNotes, loadNotesError, loadNotesSuccess } from '@/slices/note'
-import { sync, syncError, syncSuccess } from '@/slices/sync'
-import { login, loginSuccess, loginError, logout, logoutSuccess } from '@/slices/auth'
+import { requestCategories, requestNotes, requestSettings, saveState, saveSettings } from '../../client/api'
+import { loadCategories, loadCategoriesError, loadCategoriesSuccess } from '../../client/slices/category'
+import { loadNotes, loadNotesError, loadNotesSuccess } from '../../client/slices/note'
+import { sync, syncError, syncSuccess } from '../../client/slices/sync'
+import { login, loginSuccess, loginError, logout, logoutSuccess } from '../../client/slices/auth'
 import {
   updateCodeMirrorOption,
   loadSettingsSuccess,
@@ -16,9 +16,9 @@ import {
   togglePreviewMarkdown,
   toggleSettingsModal,
   updateNotesSortStrategy,
-} from '@/slices/settings'
-import { SyncAction } from '@/types'
-import { getSettings } from '@/selectors'
+} from '../../client/slices/settings'
+import { SyncAction } from '../../client/types'
+import { getSettings } from '../../client/selectors'
 
 const isDemo = true //process.env.DEMO
 
@@ -32,7 +32,7 @@ function* loginUser() {
 
       yield put(loginSuccess(data))
     }
-  } catch (error) {
+  } catch (error:any) {
     yield put(loginError(error.message))
   }
 }
@@ -53,7 +53,7 @@ function* logoutUser() {
 }
 
 // Get notes from API
-function* fetchNotes() {
+function* fetchNotes(): Generator<any, any, any> {
   let data
   try {
     if (isDemo) {
@@ -64,13 +64,13 @@ function* fetchNotes() {
     const { notesSortKey } = yield select(getSettings)
 
     yield put(loadNotesSuccess({ notes: data, sortOrderKey: notesSortKey }))
-  } catch (error) {
+  } catch (error:any) {
     yield put(loadNotesError(error.message))
   }
 }
 
 // Get categories from API
-function* fetchCategories() {
+function* fetchCategories(): Generator<any, any, any> {
   let data
   try {
     if (isDemo) {
@@ -80,13 +80,13 @@ function* fetchCategories() {
     }
 
     yield put(loadCategoriesSuccess(data))
-  } catch (error) {
+  } catch (error:any) {
     yield put(loadCategoriesError(error.message))
   }
 }
 
 // Get settings from API
-function* fetchSettings() {
+function* fetchSettings(): Generator<any, any, any> {
   let data
   try {
     data = yield requestSettings()
@@ -105,12 +105,12 @@ function* syncData({ payload }: SyncAction) {
       yield axios.post('/api/sync', payload)
     }
     yield put(syncSuccess(dayjs().format()))
-  } catch (error) {
+  } catch (error:any) {
     yield put(syncError(error.message))
   }
 }
 
-function* syncSettings() {
+function* syncSettings(): Generator<any, any, any> {
   try {
     const settings = yield select(getSettings)
 

@@ -1,4 +1,4 @@
-import { RootState } from '@/types'
+import { RootState } from '../../client/types'
 
 export const getSettings = (state: RootState) => state.settingsState
 export const getCategories = (state: RootState) => state.categoryState

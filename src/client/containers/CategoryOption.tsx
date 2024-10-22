@@ -3,21 +3,21 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Draggable } from 'react-beautiful-dnd'
 import { Folder as FolderIcon, MoreHorizontal } from 'react-feather'
 
-import { TestID } from '@resources/TestID'
-import { CategoryItem, ReactDragEvent, ReactMouseEvent, ReactSubmitEvent } from '@/types'
-import { determineCategoryClass } from '@/utils/helpers'
-import { getNotes, getCategories, getSettings } from '@/selectors'
+import { TestID } from '../../resources/TestID'
+import { CategoryItem, ReactDragEvent, ReactMouseEvent, ReactSubmitEvent } from '../../client/types'
+import { determineCategoryClass } from '../../client/utils/helpers'
+import { getNotes, getCategories, getSettings } from '../../client/selectors'
 import {
   updateActiveCategoryId,
   updateActiveNote,
   updateSelectedNotes,
   addCategoryToNote,
-} from '@/slices/note'
-import { setCategoryEdit, categoryDragLeave, categoryDragEnter } from '@/slices/category'
-import { iconColor } from '@/utils/constants'
-import { ContextMenuEnum } from '@/utils/enums'
-import { getNotesSorter } from '@/utils/notesSortStrategies'
-import { ContextMenu } from '@/containers/ContextMenu'
+} from '../../client/slices/note'
+import { setCategoryEdit, categoryDragLeave, categoryDragEnter } from '../../client/slices/category'
+import { iconColor } from '../../client/utils/constants'
+import { ContextMenuEnum } from '../../client/utils/enums'
+import { getNotesSorter } from '../../client/utils/notesSortStrategies'
+import { ContextMenu } from '../../client/containers/ContextMenu'
 
 interface CategoryOptionProps {
   category: CategoryItem

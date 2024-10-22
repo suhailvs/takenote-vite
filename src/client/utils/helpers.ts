@@ -4,10 +4,10 @@ import JSZip from 'jszip'
 import { Action } from 'redux'
 import * as clipboard from 'clipboard-polyfill/text'
 
-import { LabelText } from '@resources/LabelText'
-import { Folder, NotesSortKey } from '@/utils/enums'
-import { folderMap } from '@/utils/constants'
-import { NoteItem, CategoryItem, WithPayload } from '@/types'
+import { LabelText } from '../../resources/LabelText'
+import { Folder, NotesSortKey } from '../../client/utils/enums'
+import { folderMap } from '../../client/utils/constants'
+import { NoteItem, CategoryItem, WithPayload } from '../../client/types'
 
 export const getActiveNote = (notes: NoteItem[], activeNoteId: string) =>
   notes.find((note) => note.id === activeNoteId)
@@ -92,6 +92,7 @@ export const downloadNotes = (notes: NoteItem[], categories: CategoryItem[]): vo
         URL.revokeObjectURL(downloadUrl)
       },
       (err) => {
+        console.log(err)
         // TODO: error generating zip file.
         // Generate a popup?
       }
@@ -213,6 +214,8 @@ export const determineAppClass = (
   sidebarVisible: boolean,
   activeFolder: Folder
 ) => {
+  console.log(sidebarVisible);
+  console.log(activeFolder);
   let className = 'app'
 
   if (darkTheme) className += ' dark'

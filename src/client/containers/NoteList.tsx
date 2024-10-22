@@ -2,23 +2,23 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { MoreHorizontal, Book, Star, Folder as FolderIcon } from 'react-feather'
 
-import { TestID } from '@resources/TestID'
-import { Folder, Shortcuts, ContextMenuEnum } from '@/utils/enums'
-import { NoteListButton } from '@/components/NoteList/NoteListButton'
-import { SearchBar } from '@/components/NoteList/SearchBar'
-import { ContextMenu } from '@/containers/ContextMenu'
-import { getNoteTitle, shouldOpenContextMenu, debounceEvent, isDraftNote } from '@/utils/helpers'
-import { useKey } from '@/utils/hooks'
+import { TestID } from '../../resources/TestID'
+import { Folder, Shortcuts, ContextMenuEnum } from '../../client/utils/enums'
+import { NoteListButton } from '../../client/components/NoteList/NoteListButton'
+import { SearchBar } from '../../client/components/NoteList/SearchBar'
+import { ContextMenu } from '../../client/containers/ContextMenu'
+import { getNoteTitle, shouldOpenContextMenu, debounceEvent, isDraftNote } from '../../client/utils/helpers'
+import { useKey } from '../../client/utils/hooks'
 import {
   permanentlyEmptyTrash,
   pruneNotes,
   updateActiveNote,
   searchNotes,
   updateSelectedNotes,
-} from '@/slices/note'
-import { NoteItem, ReactDragEvent, ReactMouseEvent } from '@/types'
-import { getNotes, getSettings, getCategories } from '@/selectors'
-import { getNotesSorter } from '@/utils/notesSortStrategies'
+} from '../../client/slices/note'
+import { NoteItem, ReactDragEvent, ReactMouseEvent } from '../../client/types'
+import { getNotes, getSettings, getCategories } from '../../client/selectors'
+import { getNotesSorter } from '../../client/utils/notesSortStrategies'
 
 export const NoteList: React.FC = () => {
   // ===========================================================================

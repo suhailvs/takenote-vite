@@ -1,4 +1,4 @@
-import { Folder, NotesSortKey, DirectionText } from '@/utils/enums'
+import { Folder, NotesSortKey, DirectionText } from '../../client/utils/enums'
 
 export const folderMap: Record<Folder, string> = {
   [Folder.ALL]: 'All Notes',

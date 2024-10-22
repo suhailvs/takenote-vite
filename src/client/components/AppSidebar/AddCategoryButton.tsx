@@ -1,7 +1,7 @@
 import React from 'react'
 import { Plus } from 'react-feather'
 
-import { iconColor } from '@/utils/constants'
+import { iconColor } from '../../../client/utils/constants'
 
 export interface AddCategoryButtonProps {
   dataTestID: string

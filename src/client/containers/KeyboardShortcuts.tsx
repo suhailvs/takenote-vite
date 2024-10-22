@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import prettier from 'prettier/standalone'
 import parserMarkdown from 'prettier/parser-markdown'
 
-import { useTempState } from '@/contexts/TempStateContext'
-import { Folder, Shortcuts } from '@/utils/enums'
-import { downloadNotes, getActiveNote, newNoteHandlerHelper } from '@/utils/helpers'
-import { useKey } from '@/utils/hooks'
+import { useTempState } from '../../client/contexts/TempStateContext'
+import { Folder, Shortcuts } from '../../client/utils/enums'
+import { downloadNotes, getActiveNote, newNoteHandlerHelper } from '../../client/utils/helpers'
+import { useKey } from '../../client/utils/hooks'
 import {
   addNote,
   swapFolder,
@@ -14,11 +14,11 @@ import {
   updateActiveNote,
   updateSelectedNotes,
   updateNote,
-} from '@/slices/note'
-import { sync } from '@/slices/sync'
-import { getCategories, getNotes, getSettings } from '@/selectors'
-import { CategoryItem, NoteItem } from '@/types'
-import { toggleDarkTheme, togglePreviewMarkdown, updateCodeMirrorOption } from '@/slices/settings'
+} from '../../client/slices/note'
+import { sync } from '../../client/slices/sync'
+import { getCategories, getNotes, getSettings } from '../../client/selectors'
+import { CategoryItem, NoteItem } from '../../client/types'
+import { toggleDarkTheme, togglePreviewMarkdown, updateCodeMirrorOption } from '../../client/slices/settings'
 
 export const KeyboardShortcuts: React.FC = () => {
   // ===========================================================================

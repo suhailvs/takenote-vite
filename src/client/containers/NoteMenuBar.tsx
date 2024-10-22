@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Eye,
@@ -14,19 +14,19 @@ import {
   Clipboard as ClipboardCmp,
 } from 'react-feather'
 
-import { TestID } from '@resources/TestID'
-import { LastSyncedNotification } from '@/components/LastSyncedNotification'
-import { NoteItem, CategoryItem } from '@/types'
+import { TestID } from '../../resources/TestID'
+import { LastSyncedNotification } from '../../client/components/LastSyncedNotification'
+import { NoteItem, CategoryItem } from '../../client/types'
 import {
   toggleSettingsModal,
   togglePreviewMarkdown,
   toggleDarkTheme,
   updateCodeMirrorOption,
-} from '@/slices/settings'
-import { toggleFavoriteNotes, toggleTrashNotes } from '@/slices/note'
-import { getCategories, getNotes, getSync, getSettings } from '@/selectors'
-import { downloadNotes, isDraftNote, getShortUuid, copyToClipboard } from '@/utils/helpers'
-import { sync } from '@/slices/sync'
+} from '../../client/slices/settings'
+import { toggleFavoriteNotes, toggleTrashNotes } from '../../client/slices/note'
+import { getCategories, getNotes, getSync, getSettings } from '../../client/selectors'
+import { downloadNotes, isDraftNote, getShortUuid, copyToClipboard } from '../../client/utils/helpers'
+import { sync } from '../../client/slices/sync'
 
 export const NoteMenuBar = () => {
   // ===========================================================================

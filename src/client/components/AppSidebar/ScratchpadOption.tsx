@@ -1,10 +1,10 @@
 import React from 'react'
 import { Edit } from 'react-feather'
 
-import { TestID } from '@resources/TestID'
-import { LabelText } from '@resources/LabelText'
-import { Folder } from '@/utils/enums'
-import { iconColor } from '@/utils/constants'
+import { TestID } from '../../../resources/TestID'
+import { LabelText } from '../../../resources/LabelText'
+import { Folder } from '../../../client/utils/enums'
+import { iconColor } from '../../../client/utils/constants'
 
 export interface ScratchpadOptionProps {
   active: boolean

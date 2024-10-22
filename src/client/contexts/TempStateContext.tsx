@@ -1,4 +1,4 @@
-import React, { createContext, FunctionComponent, useContext, useState } from 'react'
+import { createContext, FunctionComponent,ReactNode, useContext, useState } from 'react'
 
 interface TempStateContextInterface {
   addingTempCategory: boolean
@@ -7,7 +7,9 @@ interface TempStateContextInterface {
 
 const initialContextValue = {
   addingTempCategory: false,
-  setAddingTempCategory: (adding: boolean) => undefined,
+  setAddingTempCategory: (adding: boolean) => {
+    console.log(adding); 
+    return undefined},
 }
 
 const TempStateContext = createContext<TempStateContextInterface>(initialContextValue)
@@ -21,8 +23,10 @@ const useTempState = () => {
 
   return context
 }
-
-const TempStateProvider: FunctionComponent = ({ children }) => {
+interface TempStateProviderProps {
+  children: ReactNode;
+}
+const TempStateProvider: FunctionComponent<TempStateProviderProps> = ({ children }) => {
   const [addingTempCategory, setAddingTempCategory] = useState(false)
 
   const value: TempStateContextInterface = {

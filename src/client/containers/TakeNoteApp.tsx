@@ -6,26 +6,26 @@ import SplitPane from 'react-split-pane'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 
-import { AppSidebar } from '@/containers/AppSidebar'
-import { KeyboardShortcuts } from '@/containers/KeyboardShortcuts'
-import { NoteEditor } from '@/containers/NoteEditor'
-import { NoteList } from '@/containers/NoteList'
-import { SettingsModal } from '@/containers/SettingsModal'
-import { TempStateProvider } from '@/contexts/TempStateContext'
-import { useInterval, useBeforeUnload } from '@/utils/hooks'
+import { AppSidebar } from '../../client/containers/AppSidebar'
+import { KeyboardShortcuts } from '../../client/containers/KeyboardShortcuts'
+import { NoteEditor } from '../../client/containers/NoteEditor'
+import { NoteList } from '../../client/containers/NoteList'
+import { SettingsModal } from '../../client/containers/SettingsModal'
+import { TempStateProvider } from '../../client/contexts/TempStateContext'
+import { useInterval, useBeforeUnload } from '../../client/utils/hooks'
 import {
   getWebsiteTitle,
   determineAppClass,
   getActiveCategory,
   getDayJsLocale,
   getNoteBarConf,
-} from '@/utils/helpers'
-import { loadCategories, swapCategories } from '@/slices/category'
-import { sync } from '@/slices/sync'
-import { NoteItem, CategoryItem } from '@/types'
-import { loadNotes } from '@/slices/note'
-import { loadSettings } from '@/slices/settings'
-import { getSettings, getNotes, getCategories, getSync } from '@/selectors'
+} from '../../client/utils/helpers'
+import { loadCategories, swapCategories } from '../../client/slices/category'
+import { sync } from '../../client/slices/sync'
+import { NoteItem, CategoryItem } from '../../client/types'
+import { loadNotes } from '../../client/slices/note'
+import { loadSettings } from '../../client/slices/settings'
+import { getSettings, getNotes, getCategories, getSync } from '../../client/selectors'
 
 dayjs.extend(localizedFormat)
 dayjs.locale(getDayJsLocale(navigator.language))
@@ -101,7 +101,7 @@ export const TakeNoteApp: React.FC = () => {
           <DragDropContext onDragEnd={onDragEnd}>
             <SplitPane split="vertical" minSize={150} maxSize={500} defaultSize={240}>
               <AppSidebar />
-              <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
+              <SplitPane split="vertical" {...getNoteBarConf(activeFolder) as any}>
                 <NoteList />
                 <NoteEditor />
               </SplitPane>

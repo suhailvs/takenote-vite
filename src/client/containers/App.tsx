@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 
-import { LandingPage } from '@/components/LandingPage'
-import { TakeNoteApp } from '@/containers/TakeNoteApp'
-import { PublicRoute } from '@/router/PublicRoute'
-import { PrivateRoute } from '@/router/PrivateRoute'
-import { getAuth } from '@/selectors'
-import { login } from '@/slices/auth'
+import { LandingPage } from '../../client/components/LandingPage'
+import { TakeNoteApp } from '../../client/containers/TakeNoteApp'
+import { PublicRoute } from '../../client/router/PublicRoute'
+import { PrivateRoute } from '../../client/router/PrivateRoute'
+import { getAuth } from '../../client/selectors'
+import { login } from '../../client/slices/auth'
 
 const isDemo = true //process.env.DEMO
 

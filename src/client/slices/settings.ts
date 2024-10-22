@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { SettingsState } from '@/types'
-import { NotesSortKey, DirectionText } from '@/utils/enums'
+import { SettingsState } from '../../client/types'
+import { NotesSortKey, DirectionText } from '../../client/utils/enums'
 
 export const initialState: SettingsState = {
   previewMarkdown: false,
@@ -57,6 +57,7 @@ const settingsSlice = createSlice({
     },
 
     loadSettingsSuccess: (state, { payload }: PayloadAction<SettingsState>) => {
+      console.log(state)
       return { ...payload, loading: false }
     },
   },

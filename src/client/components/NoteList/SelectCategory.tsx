@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { TestID } from '@resources/TestID'
-import { NoteItem, CategoryItem } from '@/types'
-import { isDraftNote } from '@/utils/helpers'
+import { TestID } from '../../../resources/TestID'
+import { NoteItem, CategoryItem } from '../../../client/types'
+import { isDraftNote } from '../../../client/utils/helpers'
 
 export interface SelectCategoryProps {
   onChange: (selectedOption: any) => void

@@ -2,16 +2,16 @@ import ReactDOM from 'react-dom'
 import React, { useEffect, useState, createContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { SelectCategory } from '@/components/NoteList/SelectCategory'
-import { ContextMenuOptions } from '@/containers/ContextMenuOptions'
-import { addCategoryToNote, updateActiveCategoryId, updateActiveNote } from '@/slices/note'
-import { NoteItem, CategoryItem } from '@/types'
-import { getNotes, getCategories, getSettings } from '@/selectors'
-import { ContextMenuEnum } from '@/utils/enums'
-import { isDraftNote } from '@/utils/helpers'
+import { SelectCategory } from '../../client/components/NoteList/SelectCategory'
+import { ContextMenuOptions } from '../../client/containers/ContextMenuOptions'
+import { addCategoryToNote, updateActiveCategoryId, updateActiveNote } from '../../client/slices/note'
+import { NoteItem, CategoryItem } from '../../client/types'
+import { getNotes, getCategories, getSettings } from '../../client/selectors'
+import { ContextMenuEnum } from '../../client/utils/enums'
+import { isDraftNote } from '../../client/utils/helpers'
 
 export const MenuUtilitiesContext = createContext({
-  setOptionsId: (id: string) => {},
+  setOptionsId: (id: string) => {console.log(id)},
 })
 interface Position {
   x: number
