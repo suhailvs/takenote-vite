@@ -31,7 +31,7 @@ createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
   <StrictMode>
     
-    <RouterProvider router={router} history={history}/>
+    <RouterProvider router={router}/>
     
   </StrictMode>
   </Provider>,
