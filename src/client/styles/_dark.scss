@@ -157,7 +157,7 @@ $dark-editor: #3f3f3f;
     color: $light-font-color;
   }
 
-  .editor .CodeMirror-activeline-background {
+  .editor {
     background: #222 !important;
   }
 
@@ -291,6 +291,11 @@ $dark-editor: #3f3f3f;
   .last-synced {
     color: rgba(255, 255, 255, 0.4);
   }
+  h2, textarea {
+    color: rgba(255, 255, 255, 0.4);
+    border-color: darken($dark-sidebar, 10%);
+  }
+
 
   .tab-list {
     border-color: darken($dark-sidebar, 10%);

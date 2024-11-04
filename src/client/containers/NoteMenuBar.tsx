@@ -104,8 +104,10 @@ export const NoteMenuBar = () => {
 
   return (
     <section className="note-menu-bar">
+      <h2>{activeNote && activeNote.text.slice(0, activeNote.text.indexOf("\n"))}</h2>
+      <nav>
       {activeNote && !isDraftNote(activeNote) ? (
-        <nav>
+        <>
           <button
             className="note-menu-bar-button"
             onClick={togglePreviewHandler}
@@ -146,11 +148,11 @@ export const NoteMenuBar = () => {
             {uuidCopiedText && <span className="uuid-copied-text">{uuidCopiedText}</span>}
             <span className="sr-only">Copy note</span>
           </button>
-        </nav>
+          </>
       ) : (
         <div />
       )}
-      <nav>
+      
         <LastSyncedNotification datetime={lastSynced} pending={pendingSync} syncing={syncing} />
         <button
           className="note-menu-bar-button"
