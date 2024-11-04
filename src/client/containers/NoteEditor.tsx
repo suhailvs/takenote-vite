@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import React from 'react'
-import { Controlled as CodeMirror } from 'react-codemirror2'
+// import { Controlled as CodeMirror } from 'react-codemirror2'
 import { useDispatch, useSelector } from 'react-redux'
 import { Editor } from 'codemirror'
 
@@ -13,11 +13,11 @@ import { PreviewEditor } from '../../client/components/Editor/PreviewEditor'
 import { getNotes, getSettings, getSync } from '../../client/selectors'
 import { setPendingSync } from '../../client/slices/sync'
 
-import 'codemirror/lib/codemirror.css'
-// import 'codemirror/theme/base16-light.css'
-import 'codemirror/mode/gfm/gfm'
-import 'codemirror/addon/selection/active-line'
-import 'codemirror/addon/scroll/scrollpastend'
+// import 'codemirror/lib/codemirror.css'
+// // import 'codemirror/theme/base16-light.css'
+// import 'codemirror/mode/gfm/gfm'
+// import 'codemirror/addon/selection/active-line'
+// import 'codemirror/addon/scroll/scrollpastend'
 
 export const NoteEditor: React.FC = () => {
   // ===========================================================================
@@ -74,51 +74,63 @@ export const NoteEditor: React.FC = () => {
         />
       )
     }
-
+    const handleChange = (event:any) => {
+      _updateNote({
+        id: activeNote.id,
+        text: event.target.value,
+        created: activeNote.created,
+        lastUpdated: dayjs().format(),
+      })
+    }
     return (
-      <CodeMirror
-        data-testid="codemirror-editor"
-        className="editor mousetrap"
-        value={activeNote.text}
-        options={codeMirrorOptions}
-        editorDidMount={(editor) => {
-          setTimeout(() => {
-            editor.focus()
-          }, 0)
-          editor.setCursor(0)
-          setEditorOverlay(editor)
-        }}
-        onBeforeChange={(editor, data, value) => {
-          console.log(editor)
-          console.log(data)
-          _updateNote({
-            id: activeNote.id,
-            text: value,
-            created: activeNote.created,
-            lastUpdated: dayjs().format(),
-          })
-        }}
-        onChange={(editor, data, value) => {
-          console.log(data)
-          if (!value) {
-            editor.focus()
-          }
-        }}
-        onPaste={(editor, event: any) => {
-          // Get around pasting issue
-          // https://github.com/scniro/react-codemirror2/issues/77
-          if (!event.clipboardData || !event.clipboardData.items || !event.clipboardData.items[0])
-            return
-          event.clipboardData.items[0].getAsString((pasted: any) => {
-            if (editor.getSelection() !== pasted) return
-            const { anchor, head } = editor.listSelections()[0]
-            editor.setCursor({
-              line: Math.max(anchor.line, head.line),
-              ch: Math.max(anchor.ch, head.ch),
-            })
-          })
-        }}
-      />
+      <textarea className="editor mousetrap" spellCheck="false" value={activeNote.text} onChange={handleChange} />
+      // <CodeMirror
+      //   data-testid="codemirror-editor"
+      //   className="editor mousetrap"
+      //   value={activeNote.text}
+      //   options={codeMirrorOptions}
+      //   editorDidMount={(editor) => {
+      //     setTimeout(() => {
+      //       editor.focus()
+      //     }, 0)
+      //     editor.setCursor(0)
+      //     setEditorOverlay(editor)
+      //   }}
+      //   onBeforeChange={(editor, data, value) => {
+      //     console.log(editor)
+      //     console.log(data)
+          
+          
+      //     _updateNote({
+      //       id: activeNote.id,
+      //       text: value,
+      //       created: activeNote.created,
+      //       lastUpdated: dayjs().format(),
+      //     })
+      //   }}
+      //   onChange={(editor, data, value) => {
+      //     console.log(data)
+      //     console.log('onchange')
+      //     console.log("Active note text:", activeNote.text);
+      //     if (!value) {
+      //       editor.focus()
+      //     }
+      //   }}
+      //   onPaste={(editor, event: any) => {
+      //     // Get around pasting issue
+      //     // https://github.com/scniro/react-codemirror2/issues/77
+      //     if (!event.clipboardData || !event.clipboardData.items || !event.clipboardData.items[0])
+      //       return
+      //     event.clipboardData.items[0].getAsString((pasted: any) => {
+      //       if (editor.getSelection() !== pasted) return
+      //       const { anchor, head } = editor.listSelections()[0]
+      //       editor.setCursor({
+      //         line: Math.max(anchor.line, head.line),
+      //         ch: Math.max(anchor.ch, head.ch),
+      //       })
+      //     })
+      //   }}
+      // />
     )
   }
 

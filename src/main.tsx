@@ -1,31 +1,39 @@
-
-import { render } from 'react-dom'
+import { StrictMode } from 'react'
 import { Provider } from 'react-redux'
-import { Router } from 'react-router-dom'
-import createSagaMiddleware from 'redux-saga'
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import { App } from './client/containers/App'
-// import { App } from '@/containers/App'
-import rootSaga from './client/sagas'
-import rootReducer from './client/slices'
-import history from './client/utils/history'
-
+import { createRoot } from 'react-dom/client'
+import { TakeNoteApp } from './client/containers/TakeNoteApp'
+import createSagaMiddleware from 'redux-saga';
 import './client/styles/index.scss'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import { configureStore } from '@reduxjs/toolkit'
+import rootReducer from './client/slices'
+import rootSaga from './client/sagas'
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [sagaMiddleware, ...getDefaultMiddleware({ thunk: false })],
-  devTools: true, //process.env.NODE_ENV !== 'production',
-})
-
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+  devTools: true, // process.env.NODE_ENV !== 'production',
+});
 sagaMiddleware.run(rootSaga)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <TakeNoteApp />,
+  },
+]);
 
-render(
+createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-    <Router history={history}>
-      <App />
-    </Router>
+  <StrictMode>
+    
+    <RouterProvider router={router} history={history}/>
+    
+  </StrictMode>
   </Provider>,
-  document.getElementById('root')
 )
+

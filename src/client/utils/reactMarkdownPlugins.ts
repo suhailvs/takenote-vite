@@ -1,4 +1,4 @@
-import visit from 'unist-util-visit'
+import {visit} from 'unist-util-visit'
 
 // This regexp will match any string starting with a # followed by 6 alphanumeric chars
 // #k5b4m3, #j4n7k3, etc (substring of a note's UUID)

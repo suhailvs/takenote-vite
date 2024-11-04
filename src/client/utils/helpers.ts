@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import { v4 as uuid } from 'uuid'
 import JSZip from 'jszip'
 import { Action } from 'redux'
-import * as clipboard from 'clipboard-polyfill/text'
+import * as clipboard from 'clipboard-polyfill'
 
 import { LabelText } from '../../resources/LabelText'
 import { Folder, NotesSortKey } from '../../client/utils/enums'

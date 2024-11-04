@@ -1,7 +1,8 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
+// import ReactMarkdown from 'react-markdown'
+import Markdown from 'react-markdown'
 import { useDispatch } from 'react-redux'
-
+// import remarkGfm from 'remark-gfm'; 
 import { Folder } from '../../../client/utils/enums'
 import { updateActiveNote, updateSelectedNotes, pruneNotes, swapFolder } from '../../../client/slices/note'
 import { NoteItem } from '../../../client/types'
@@ -59,17 +60,18 @@ export const PreviewEditor: React.FC<PreviewEditorProps> = ({ noteText, directio
     return <NoteLink uuid={value} notes={notes} handleNoteLinkClick={handleNoteLinkClick} />
   }
 
+  const components = {
+    uuid: ({ node, ...props }) => {
+      console.log("Custom renderer for uuid called:", props);
+      return returnNoteLink(props.value);  // Check if this value is correct
+    },
+  };
+ 
   return (
     <div className='markdown-body'>
-    <ReactMarkdown
-      plugins={[uuidPlugin]}
-      renderers={{
-        uuid: ({ value }:any) => returnNoteLink(value),
-      }}
-      linkTarget="_blank"
-      className={`previewer previewer_direction-${directionText}`}
-      source={noteText}
-    />
+      <Markdown remarkPlugins={[uuidPlugin]} className={`previewer previewer_direction-${directionText}`}>
+        {noteText}
+      </Markdown>
     </div>
   )
 }

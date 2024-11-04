@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Draggable } from 'react-beautiful-dnd'
+// import { Draggable } from 'react-beautiful-dnd'
 import { Folder as FolderIcon, MoreHorizontal } from 'react-feather'
 
 import { TestID } from '../../resources/TestID'
@@ -78,14 +78,12 @@ export const CategoryOption: React.FC<CategoryOptionProps> = ({
   const _categoryDragLeave = (category: CategoryItem) => dispatch(categoryDragLeave(category))
 
   return (
-    <Draggable draggableId={category.id} index={index}>
-      {(draggableProvided, snapshot) => (
+    // <Draggable draggableId={category.id} index={index}>
+    //   {(draggableProvided, snapshot) => (
         <div
-          {...draggableProvided.dragHandleProps}
-          {...draggableProvided.draggableProps}
-          ref={draggableProvided.innerRef}
+          
           data-testid={TestID.CATEGORY_LIST_DIV}
-          className={determineCategoryClass(category, snapshot.isDragging, activeCategoryId)}
+          className={determineCategoryClass(category, true, activeCategoryId)}
           onClick={() => {
             const notesForNewCategory = notes
               .filter((note) => !note.trash && note.category === category.id)
@@ -162,7 +160,7 @@ export const CategoryOption: React.FC<CategoryOptionProps> = ({
             />
           )}
         </div>
-      )}
-    </Draggable>
+    //   )}
+    // </Draggable>
   )
 }

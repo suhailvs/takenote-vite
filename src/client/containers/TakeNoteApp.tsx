@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
-import SplitPane from 'react-split-pane'
+// import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+// import SplitPane from 'react-split-pane'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 
@@ -26,6 +26,11 @@ import { NoteItem, CategoryItem } from '../../client/types'
 import { loadNotes } from '../../client/slices/note'
 import { loadSettings } from '../../client/slices/settings'
 import { getSettings, getNotes, getCategories, getSync } from '../../client/selectors'
+import {
+  Panel,
+  PanelGroup,
+  PanelResizeHandle,
+} from "react-resizable-panels";
 
 dayjs.extend(localizedFormat)
 dayjs.locale(getDayJsLocale(navigator.language))
@@ -98,15 +103,23 @@ export const TakeNoteApp: React.FC = () => {
 
       <TempStateProvider>
         <div className={determineAppClass(darkTheme, sidebarVisible, activeFolder)}>
-          <DragDropContext onDragEnd={onDragEnd}>
-            <SplitPane split="vertical" minSize={150} maxSize={500} defaultSize={240}>
+          {/* <DragDropContext onDragEnd={onDragEnd}> */}
+
+          <PanelGroup direction="horizontal">
+            <Panel defaultSize={30} minSize={20}><AppSidebar /></Panel>
+            <PanelResizeHandle />
+            <Panel minSize={30}><NoteList /></Panel>
+            <PanelResizeHandle />
+            <Panel defaultSize={100} minSize={90}><NoteEditor /></Panel>
+        </PanelGroup>
+            {/* <SplitPane split="vertical" minSize={150} maxSize={500} defaultSize={240}>
               <AppSidebar />
               <SplitPane split="vertical" {...getNoteBarConf(activeFolder) as any}>
                 <NoteList />
                 <NoteEditor />
               </SplitPane>
-            </SplitPane>
-          </DragDropContext>
+            </SplitPane> */}
+          {/* </DragDropContext> */}
           <KeyboardShortcuts />
           <SettingsModal />
         </div>
