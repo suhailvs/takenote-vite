@@ -1,19 +1,18 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import { Draggable } from 'react-beautiful-dnd'
-import { Folder as FolderIcon, MoreHorizontal } from 'react-feather'
+import { Folder as FolderIcon } from 'react-feather'
 
 import { TestID } from '../../resources/TestID'
-import { CategoryItem, ReactDragEvent, ReactMouseEvent, ReactSubmitEvent } from '../../client/types'
+import { CategoryItem, ReactMouseEvent, ReactSubmitEvent } from '../../client/types'
 import { determineCategoryClass } from '../../client/utils/helpers'
 import { getNotes, getCategories, getSettings } from '../../client/selectors'
 import {
   updateActiveCategoryId,
   updateActiveNote,
   updateSelectedNotes,
-  addCategoryToNote,
 } from '../../client/slices/note'
-import { setCategoryEdit, categoryDragLeave, categoryDragEnter } from '../../client/slices/category'
+import { setCategoryEdit } from '../../client/slices/category'
 import { iconColor } from '../../client/utils/constants'
 import { ContextMenuEnum } from '../../client/utils/enums'
 import { getNotesSorter } from '../../client/utils/notesSortStrategies'
@@ -40,9 +39,7 @@ interface CategoryOptionProps {
 export const CategoryOption: React.FC<CategoryOptionProps> = ({
   category,
   index,
-  contextMenuRef,
-  handleCategoryMenuClick,
-  handleCategoryRightClick,
+  contextMenuRef,  
   onSubmitUpdateCategory,
   optionsPosition,
   optionsId,
@@ -72,11 +69,6 @@ export const CategoryOption: React.FC<CategoryOptionProps> = ({
     dispatch(updateSelectedNotes({ noteId, multiSelect }))
   const _setCategoryEdit = (categoryId: string, tempName: string) =>
     dispatch(setCategoryEdit({ id: categoryId, tempName }))
-  const _addCategoryToNote = (categoryId: string, noteId: string) =>
-    dispatch(addCategoryToNote({ categoryId, noteId }))
-  const _categoryDragEnter = (category: CategoryItem) => dispatch(categoryDragEnter(category))
-  const _categoryDragLeave = (category: CategoryItem) => dispatch(categoryDragLeave(category))
-
   return (
     // <Draggable draggableId={category.id} index={index}>
     //   {(draggableProvided, snapshot) => (
@@ -98,22 +90,7 @@ export const CategoryOption: React.FC<CategoryOptionProps> = ({
               _updateSelectedNotes(defaultActiveNoteId, false)
             }
           }}
-          onDoubleClick={() => {
-            _setCategoryEdit(category.id, category.name)
-          }}
-          onBlur={() => {
-            _setCategoryEdit('', '')
-          }}
-          onDrop={(event) => {
-            event.preventDefault()
 
-            _addCategoryToNote(category.id, event.dataTransfer.getData('text'))
-            _categoryDragLeave(category)
-          }}
-          onDragOver={(event: ReactDragEvent) => event.preventDefault()}
-          onDragEnter={() => _categoryDragEnter(category)}
-          onDragLeave={() => _categoryDragLeave(category)}
-          onContextMenu={(event) => handleCategoryRightClick(event, category.id)}
         >
           <form
             className="category-list-name"
@@ -145,10 +122,9 @@ export const CategoryOption: React.FC<CategoryOptionProps> = ({
           </form>
           <div
             data-testid={TestID.MOVE_CATEGORY}
-            className={optionsId === category.id ? 'category-options active' : 'category-options'}
-            onClick={(event) => handleCategoryMenuClick(event, category.id)}
+            className='category-options active'            
           >
-            <MoreHorizontal size={15} className="context-menu-action" />
+            {notes.filter((note) => !note.trash && note.category === category.id).length}
           </div>
           {optionsId === category.id && (
             <ContextMenu

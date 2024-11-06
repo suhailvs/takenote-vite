@@ -1,5 +1,5 @@
 .app-sidebar {
-  background: $app-sidebar-color;
+  background: darken($app-sidebar-color, 10%);
   color: $light-font-color;
   display: flex;
   flex-direction: column;

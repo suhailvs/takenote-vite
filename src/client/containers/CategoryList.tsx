@@ -156,6 +156,16 @@ export const CategoryList: React.FC = () => {
       </div>
       {isCategoryListOpen && (
         <>
+          {addingTempCategory && (
+            <AddCategoryForm
+              dataTestID={TestID.NEW_CATEGORY_FORM}
+              submitHandler={onSubmitNewCategory}
+              changeHandler={_setCategoryEdit}
+              resetHandler={resetTempCategory}
+              editingCategoryId={editingCategoryId}
+              tempCategoryName={tempCategoryName}
+            />
+          )}
           {/* <Droppable type="CATEGORY" droppableId="Category list">
             {(droppableProvided) => ( */}
               <div
@@ -181,16 +191,7 @@ export const CategoryList: React.FC = () => {
               </div>
             {/* )}
           </Droppable> */}
-          {addingTempCategory && (
-            <AddCategoryForm
-              dataTestID={TestID.NEW_CATEGORY_FORM}
-              submitHandler={onSubmitNewCategory}
-              changeHandler={_setCategoryEdit}
-              resetHandler={resetTempCategory}
-              editingCategoryId={editingCategoryId}
-              tempCategoryName={tempCategoryName}
-            />
-          )}
+          
         </>
       )}
     </>
