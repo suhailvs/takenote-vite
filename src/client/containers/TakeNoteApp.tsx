@@ -18,9 +18,9 @@ import {
   determineAppClass,
   getActiveCategory,
   getDayJsLocale,
-  getNoteBarConf,
+  // getNoteBarConf,
 } from '../../client/utils/helpers'
-import { loadCategories, swapCategories } from '../../client/slices/category'
+import { loadCategories } from '../../client/slices/category'
 import { sync } from '../../client/slices/sync'
 import { NoteItem, CategoryItem } from '../../client/types'
 import { loadNotes } from '../../client/slices/note'
@@ -56,8 +56,8 @@ export const TakeNoteApp: React.FC = () => {
   const _loadNotes = () => dispatch(loadNotes())
   const _loadCategories = () => dispatch(loadCategories())
   const _loadSettings = () => dispatch(loadSettings())
-  const _swapCategories = (categoryId: number, destinationId: number) =>
-    dispatch(swapCategories({ categoryId, destinationId }))
+  // const _swapCategories = (categoryId: number, destinationId: number) =>
+  //   dispatch(swapCategories({ categoryId, destinationId }))
   const _sync = (notes: NoteItem[], categories: CategoryItem[]) =>
     dispatch(sync({ notes, categories }))
 
@@ -65,17 +65,17 @@ export const TakeNoteApp: React.FC = () => {
   // Handlers
   // ===========================================================================
 
-  const onDragEnd = (result: DropResult) => {
-    const { destination, source } = result
+  // const onDragEnd = (result: DropResult) => {
+  //   const { destination, source } = result
 
-    if (!destination) return
+  //   if (!destination) return
 
-    if (destination.droppableId === source.droppableId && destination.index === source.index) return
+  //   if (destination.droppableId === source.droppableId && destination.index === source.index) return
 
-    if (result.type === 'CATEGORY') {
-      _swapCategories(source.index, destination.index)
-    }
-  }
+  //   if (result.type === 'CATEGORY') {
+  //     _swapCategories(source.index, destination.index)
+  //   }
+  // }
 
   // ===========================================================================
   // Hooks

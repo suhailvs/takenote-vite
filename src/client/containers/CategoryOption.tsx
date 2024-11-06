@@ -51,7 +51,7 @@ export const CategoryOption: React.FC<CategoryOptionProps> = ({
   // ===========================================================================
   // Selectors
   // ===========================================================================
-
+  console.log(index);
   const { activeCategoryId, notes } = useSelector(getNotes)
   const {
     editingCategory: { id: editingCategoryId, tempName: tempCategoryName },

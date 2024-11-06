@@ -20,7 +20,7 @@ export const PreviewEditor: React.FC<PreviewEditorProps> = ({ noteText, directio
   // Dispatch
   // ===========================================================================
 
- 
+  console.log(notes)
   return (
     <div className='markdown-body'>
       <Markdown remarkPlugins={[uuidPlugin]} className={`previewer previewer_direction-${directionText}`}>
