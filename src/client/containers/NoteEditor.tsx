@@ -136,7 +136,7 @@ export const NoteEditor: React.FC = () => {
 
   return (
     <main className="note-editor">
-      <NoteMenuBar /><br/><br/><br/>
+      <NoteMenuBar />
       {renderEditor()}
     </main>
   )
