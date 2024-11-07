@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import prettier from 'prettier/standalone'
-// import parserMarkdown from 'prettier/parser-markdown'
+import prettier from 'prettier/standalone'
+import parserMarkdown from 'prettier/parser-markdown'
 
 import { useTempState } from '../../client/contexts/TempStateContext'
 import { Folder, Shortcuts } from '../../client/utils/enums'
@@ -13,7 +13,7 @@ import {
   toggleTrashNotes,
   updateActiveNote,
   updateSelectedNotes,
-  // updateNote,
+  updateNote,
 } from '../../client/slices/note'
 import { sync } from '../../client/slices/sync'
 import { getCategories, getNotes, getSettings } from '../../client/selectors'
@@ -92,23 +92,22 @@ export const KeyboardShortcuts: React.FC = () => {
     _toggleDarkTheme()
     _updateCodeMirrorOption('theme', darkTheme ? 'base16-light' : 'new-moon')
   }
-  // const prettifyNoteHandler = () => {
-  //   // format current note with prettier
-  //   if (activeNote && activeNote.text) {
-  //     const formattedText = prettier.format(activeNote.text, {
-  //       parser: 'markdown',
-  //       plugins: [parserMarkdown],
-  //     })
+  const prettifyNoteHandler = () => {
+    // format current note with prettier
+    if (activeNote && activeNote.text) {
+      const formattedText = prettier.format(activeNote.text, {
+        parser: 'markdown',
+        plugins: [parserMarkdown],
+      })
 
-  //     const updatedNote = {
-  //       ...activeNote,
-  //       text: formattedText,
-  //     }
-  //     console.log(updateNote);
+      const updatedNote = {
+        ...activeNote,
+        text: formattedText,
+      }
 
-  //     dispatch(updateNote(activeNote))
-  //   }
-  // }
+      dispatch(updateNote(updatedNote))
+    }
+  }
 
   // ===========================================================================
   // Hooks
@@ -121,7 +120,7 @@ export const KeyboardShortcuts: React.FC = () => {
   useKey(Shortcuts.DOWNLOAD_NOTES, () => downloadNotesHandler())
   useKey(Shortcuts.PREVIEW, () => togglePreviewMarkdownHandler())
   useKey(Shortcuts.TOGGLE_THEME, () => toggleDarkThemeHandler())
-  // useKey(Shortcuts.PRETTIFY, () => prettifyNoteHandler())
+  useKey(Shortcuts.PRETTIFY, () => prettifyNoteHandler())
 
   return null
 }

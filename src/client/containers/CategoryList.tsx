@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { v4 as uuid } from 'uuid'
 // import { Droppable } from 'react-beautiful-dnd'
+import { Droppable } from '@hello-pangea/dnd';
 
 import { LabelText } from '../../resources/LabelText'
 import { TestID } from '../../resources/TestID'
@@ -156,20 +157,11 @@ export const CategoryList: React.FC = () => {
       </div>
       {isCategoryListOpen && (
         <>
-          {addingTempCategory && (
-            <AddCategoryForm
-              dataTestID={TestID.NEW_CATEGORY_FORM}
-              submitHandler={onSubmitNewCategory}
-              changeHandler={_setCategoryEdit}
-              resetHandler={resetTempCategory}
-              editingCategoryId={editingCategoryId}
-              tempCategoryName={tempCategoryName}
-            />
-          )}
-          {/* <Droppable type="CATEGORY" droppableId="Category list">
-            {(droppableProvided) => ( */}
+          <Droppable type="CATEGORY" droppableId="Category list">
+            {(droppableProvided) => (
               <div
-                
+                {...droppableProvided.droppableProps}
+                ref={droppableProvided.innerRef}
                 className="category-list"
                 aria-label="Category list"
               >
@@ -187,11 +179,20 @@ export const CategoryList: React.FC = () => {
                     optionsPosition={optionsPosition}
                   />
                 ))}
-               
+                {droppableProvided.placeholder}
               </div>
-            {/* )}
-          </Droppable> */}
-          
+            )}
+          </Droppable>
+          {addingTempCategory && (
+            <AddCategoryForm
+              dataTestID={TestID.NEW_CATEGORY_FORM}
+              submitHandler={onSubmitNewCategory}
+              changeHandler={_setCategoryEdit}
+              resetHandler={resetTempCategory}
+              editingCategoryId={editingCategoryId}
+              tempCategoryName={tempCategoryName}
+            />
+          )}
         </>
       )}
     </>

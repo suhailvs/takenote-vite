@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 // import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 // import SplitPane from 'react-split-pane'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
@@ -20,7 +21,7 @@ import {
   getDayJsLocale,
   // getNoteBarConf,
 } from '../../client/utils/helpers'
-import { loadCategories } from '../../client/slices/category'
+import { loadCategories, swapCategories } from '../../client/slices/category'
 import { sync } from '../../client/slices/sync'
 import { NoteItem, CategoryItem } from '../../client/types'
 import { loadNotes } from '../../client/slices/note'
@@ -31,7 +32,6 @@ import {
   PanelGroup,
   PanelResizeHandle,
 } from "react-resizable-panels";
-
 dayjs.extend(localizedFormat)
 dayjs.locale(getDayJsLocale(navigator.language))
 
@@ -56,8 +56,8 @@ export const TakeNoteApp: React.FC = () => {
   const _loadNotes = () => dispatch(loadNotes())
   const _loadCategories = () => dispatch(loadCategories())
   const _loadSettings = () => dispatch(loadSettings())
-  // const _swapCategories = (categoryId: number, destinationId: number) =>
-  //   dispatch(swapCategories({ categoryId, destinationId }))
+  const _swapCategories = (categoryId: number, destinationId: number) =>
+    dispatch(swapCategories({ categoryId, destinationId }))
   const _sync = (notes: NoteItem[], categories: CategoryItem[]) =>
     dispatch(sync({ notes, categories }))
 
@@ -65,17 +65,17 @@ export const TakeNoteApp: React.FC = () => {
   // Handlers
   // ===========================================================================
 
-  // const onDragEnd = (result: DropResult) => {
-  //   const { destination, source } = result
+  const onDragEnd = (result: DropResult) => {
+    const { destination, source } = result
 
-  //   if (!destination) return
+    if (!destination) return
 
-  //   if (destination.droppableId === source.droppableId && destination.index === source.index) return
+    if (destination.droppableId === source.droppableId && destination.index === source.index) return
 
-  //   if (result.type === 'CATEGORY') {
-  //     _swapCategories(source.index, destination.index)
-  //   }
-  // }
+    if (result.type === 'CATEGORY') {
+      _swapCategories(source.index, destination.index)
+    }
+  }
 
   // ===========================================================================
   // Hooks
@@ -103,8 +103,7 @@ export const TakeNoteApp: React.FC = () => {
 
       <TempStateProvider>
         <div className={determineAppClass(darkTheme, sidebarVisible, activeFolder)}>
-          {/* <DragDropContext onDragEnd={onDragEnd}> */}
-
+          <DragDropContext onDragEnd={onDragEnd}>
           <PanelGroup direction="horizontal">
             <Panel defaultSize={30} minSize={20}><AppSidebar /></Panel>
             <PanelResizeHandle />
@@ -112,14 +111,7 @@ export const TakeNoteApp: React.FC = () => {
             <PanelResizeHandle />
             <Panel defaultSize={100} minSize={90}><NoteEditor /></Panel>
         </PanelGroup>
-            {/* <SplitPane split="vertical" minSize={150} maxSize={500} defaultSize={240}>
-              <AppSidebar />
-              <SplitPane split="vertical" {...getNoteBarConf(activeFolder) as any}>
-                <NoteList />
-                <NoteEditor />
-              </SplitPane>
-            </SplitPane> */}
-          {/* </DragDropContext> */}
+          </DragDropContext>
           <KeyboardShortcuts />
           <SettingsModal />
         </div>

@@ -1,7 +1,7 @@
 {
-  "name": "takenote-vite",
+  "name": "takenote-new",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^17.0.0",
     "@reduxjs/toolkit": "^2.3.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@types/node": "^22.8.7",
-    "@types/react-beautiful-dnd": "^13.1.8",
+    "@types/prettier": "^2.1.3",
     "axios": "^1.7.7",
     "clipboard-polyfill": "^4.1.0",
     "dayjs": "^1.11.13",
@@ -23,9 +25,8 @@
     "jszip": "^3.10.1",
     "mousetrap": "^1.6.5",
     "mousetrap-global-bind": "^1.1.0",
-    "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-beautiful-dnd": "^13.1.1",
+    "prettier": "^2.1.2",
+    "react": "^18.3.1",    
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.3.1",
     "react-feather": "^2.0.10",
@@ -36,6 +37,7 @@
     "react-router-dom": "^6.27.0",
     "redux-saga": "^1.3.0",
     "rehype-highlight": "^7.0.1",
+    "remark-gfm": "^4.0.0",
     "sass-embedded": "^1.80.6",
     "unist-util-visit": "^5.0.0",
     "uuid": "^11.0.2"
