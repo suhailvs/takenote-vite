@@ -25,7 +25,7 @@ const categorySlice = createSlice({
   initialState,
   reducers: {
     addCategory: (state, { payload }: PayloadAction<CategoryItem>) => {
-      state.categories.push(payload)
+      state.categories.unshift(payload)
     },
 
     importCategories: (state, { payload }: PayloadAction<CategoryItem[]>) => {

@@ -150,7 +150,8 @@ export const CategoryOption: React.FC<CategoryOptionProps> = ({
             data-testid={TestID.MOVE_CATEGORY}
             className={optionsId === category.id ? 'category-options active' : 'category-options'}
             onClick={(event) => handleCategoryMenuClick(event, category.id)}
-          >
+          >            
+            <div className='category-options active'>{notes.filter((note) => !note.trash && note.category === category.id).length}</div>
             <MoreHorizontal size={15} className="context-menu-action" />
           </div>
           {optionsId === category.id && (
